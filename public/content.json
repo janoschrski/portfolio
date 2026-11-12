@@ -1,0 +1,170 @@
+{
+  "version": 1,
+  "showreel": {
+    "youtube": "",
+    "video": "",
+    "heroImage": "img/blame41.jpg"
+  },
+  "films": [
+    {
+      "id": "blame41",
+      "title": "Well Known",
+      "subtitle": "Blame41",
+      "kind": "Musikvideo · Auftragsproduktion",
+      "date": "Mai 2026",
+      "badge": "Musikvideo",
+      "text": "Als Hochschulprojekt entstanden und als Auftragsarbeit für den Künstler produziert.",
+      "roles": [
+        "Planung / Regie",
+        "Kamera",
+        "Schnitt / Effekte"
+      ],
+      "crew": "Mit Matthäus Sidek, Justin Bochynek, Anton Siering und Nico Abel.",
+      "youtube": "",
+      "video": "",
+      "image": "img/blame41.jpg"
+    },
+    {
+      "id": "angst",
+      "title": "Die Angst vorm Erwachsenwerden",
+      "subtitle": "",
+      "kind": "Kurzfilm · nach Dogma-95-Regeln",
+      "date": "Februar 2026",
+      "badge": "Dogma 95",
+      "text": "Die Geschichte eines jungen Mannes, der aus einer Welt der Resignation ausbricht.",
+      "roles": [
+        "Storytelling",
+        "Regie",
+        "Kamera",
+        "Schnitt"
+      ],
+      "crew": "Mit Matthäus Sidek, Justin Bochynek, Sebastian Blohm-Pape und Chiara Müller.",
+      "youtube": "",
+      "video": "",
+      "image": "img/angst.jpg"
+    },
+    {
+      "id": "parallelwelt",
+      "title": "Parallelwelt",
+      "subtitle": "",
+      "kind": "Kurzfilm",
+      "date": "November 2025",
+      "badge": "Kurzfilm",
+      "text": "Eine scheinbar schicksalhafte Liebesgeschichte zwischen zwei Menschen, die sich immer wieder fast begegnen und sich doch jedes Mal verpassen.",
+      "roles": [
+        "Storytelling",
+        "Regie",
+        "Schnitt"
+      ],
+      "crew": "Mit Matthäus Sidek, Justin Bochynek, Sebastian Blohm-Pape und Chiara Müller.",
+      "youtube": "",
+      "video": "",
+      "image": "img/parallelwelt.jpg"
+    },
+    {
+      "id": "pokernight",
+      "title": "Pokernight",
+      "subtitle": "",
+      "kind": "Kurzfilm · Experimentell",
+      "date": "Oktober 2025",
+      "badge": "Kurzfilm",
+      "text": "Ein Kurzfilm über die audiovisuelle Darstellung veränderter Bewusstseinszustände.",
+      "roles": [
+        "Storytelling",
+        "Kamera",
+        "Schnitt"
+      ],
+      "crew": "Mit Justin Bochynek und Sebastian Blohm-Pape.",
+      "youtube": "",
+      "video": "",
+      "image": "img/pokernight.jpg"
+    }
+  ],
+  "series": [
+    {
+      "id": "bangkok",
+      "title": "Bangkok",
+      "text": "Jede Stadt hat Geschichten, die darauf warten, entdeckt zu werden. In dieser Serie zeige ich Bangkok in Momenten, die oft übersehen werden: stille Details, unerwartete Kontraste und Alltagsszenen, die den Charakter der Stadt ausmachen.",
+      "photos": [
+        {
+          "src": "img/bangkok-1.jpg",
+          "alt": "Bangkok: Café mit alten Autos davor",
+          "wide": false
+        },
+        {
+          "src": "img/bangkok-2.jpg",
+          "alt": "Bangkok: Skytrain-Trasse mit Skyline",
+          "wide": false
+        },
+        {
+          "src": "img/bangkok-3.jpg",
+          "alt": "Bangkok: Mann an einer Kreuzung mit Taxi",
+          "wide": false
+        },
+        {
+          "src": "img/bangkok-4.jpg",
+          "alt": "Bangkok: Hausfassade mit Stromkabeln",
+          "wide": false
+        }
+      ]
+    },
+    {
+      "id": "natur",
+      "title": "Natur",
+      "text": "Auf vielen Reisen habe ich gelernt, besondere Momente festzuhalten. Hier geht es nicht um ein bestimmtes Motiv, sondern um die Schönheit der Natur und die Details, an denen viele vorbeigehen.",
+      "photos": [
+        {
+          "src": "img/nature-1.jpg",
+          "alt": "Sonnenuntergang über Palmen",
+          "wide": false
+        },
+        {
+          "src": "img/nature-2.jpg",
+          "alt": "Tempeldach vor grünem Wald und Wolken",
+          "wide": false
+        },
+        {
+          "src": "img/nature-3.jpg",
+          "alt": "See mit Spiegelung in der Abenddämmerung",
+          "wide": false
+        }
+      ]
+    },
+    {
+      "id": "street",
+      "title": "Street",
+      "text": "Die Schönheit urbaner Straßen. Durch unterschiedliche Perspektiven, Details und Momente zeigen die Bilder Seiten der Stadt, die oft unbemerkt bleiben, von Architekturlinien bis zu Alltagsszenen.",
+      "photos": [
+        {
+          "src": "img/street-1.jpg",
+          "alt": "Lichtspuren auf einer Straße bei Nacht",
+          "wide": true
+        },
+        {
+          "src": "img/street-2.jpg",
+          "alt": "Betontreppenhaus von unten",
+          "wide": false
+        },
+        {
+          "src": "img/street-5.jpg",
+          "alt": "Dunkle Passage mit Laternen",
+          "wide": false
+        },
+        {
+          "src": "img/street-3.jpg",
+          "alt": "Schwarzweiß: Hochhäuser und Wolken",
+          "wide": true
+        },
+        {
+          "src": "img/street-4.jpg",
+          "alt": "Schwarzweiß: Gebäudeschluchten von unten",
+          "wide": true
+        }
+      ]
+    }
+  ],
+  "about": {
+    "image": "img/pokernight.jpg",
+    "caption": ""
+  }
+}
