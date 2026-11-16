@@ -1,170 +1,429 @@
 {
-  "version": 1,
-  "showreel": {
-    "youtube": "",
-    "video": "",
-    "heroImage": "img/blame41.jpg"
+ "version": 2,
+ "site": {
+  "name": "Janosch Rajewski",
+  "description": "Videograf, Editor und Fotograf aus Berlin. Musikvideos, Kurzfilme und Content – Dreh, Schnitt, Color Grading und Sound aus einer Hand.",
+  "footer": "© 2026 Janosch Rajewski · Videograf & Editor · Berlin",
+  "ctaLabel": "Anfragen",
+  "ctaTarget": "kontakt",
+  "title": "Janosch Rajewski – Videograf & Editor in Berlin",
+  "city": "Berlin",
+  "shareImage": ""
+ },
+ "theme": {
+  "bg": "#0e1113",
+  "panel": "#151a1d",
+  "line": "#283034",
+  "fg": "#ebe7e0",
+  "muted": "#8f999d",
+  "accent": "#d6363d",
+  "fontDisplay": "Archivo",
+  "fontBody": "IBM Plex Sans",
+  "fontMono": "IBM Plex Mono",
+  "headingUpper": true,
+  "headingWeight": 800,
+  "headingStretch": 68,
+  "headingScale": 100,
+  "baseSize": 16,
+  "radius": 0,
+  "maxWidth": 1240,
+  "grain": true,
+  "motion": true
+ },
+ "sections": [
+  {
+   "id": "showreel",
+   "type": "hero",
+   "visible": true,
+   "navLabel": "",
+   "background": "default",
+   "spacing": "s",
+   "align": "left",
+   "divider": false,
+   "image": "img/blame41.jpg",
+   "youtube": "",
+   "video": "",
+   "playLabel": "Showreel ansehen",
+   "ratio": "2.39/1",
+   "viewfinder": true,
+   "title": "Bilder, die",
+   "highlight": "bleiben.",
+   "text": "Ich bin Janosch Rajewski, Videograf und Editor aus Berlin. Ich drehe, schneide, grade und vertone Musikvideos, Kurzfilme und Content – alles aus einer Hand.",
+   "button1": {
+    "label": "Projekt anfragen",
+    "link": "#kontakt"
+   },
+   "button2": {
+    "label": "Filme ansehen",
+    "link": "#filme"
+   },
+   "facts": [
+    "Regie · Kamera · Schnitt · Color · Sound",
+    "Berlin & deutschlandweit",
+    "Freelance"
+   ]
   },
-  "films": [
+  {
+   "id": "filme",
+   "type": "films",
+   "visible": true,
+   "navLabel": "Filme",
+   "background": "default",
+   "spacing": "m",
+   "align": "left",
+   "divider": true,
+   "title": "Filme",
+   "intro": "Musikvideos, Kurzfilme und Auftragsarbeiten. Bei jedem Projekt steht dabei, was ich übernommen habe: von der Idee über den Dreh bis zum fertigen Grading.",
+   "layout": "alternating",
+   "items": [
     {
-      "id": "blame41",
-      "title": "Well Known",
-      "subtitle": "Blame41",
-      "kind": "Musikvideo · Auftragsproduktion",
-      "date": "Mai 2026",
-      "badge": "Musikvideo",
-      "text": "Als Hochschulprojekt entstanden und als Auftragsarbeit für den Künstler produziert.",
-      "roles": [
-        "Planung / Regie",
-        "Kamera",
-        "Schnitt / Effekte"
-      ],
-      "crew": "Mit Matthäus Sidek, Justin Bochynek, Anton Siering und Nico Abel.",
-      "youtube": "",
-      "video": "",
-      "image": "img/blame41.jpg"
+     "title": "Well Known",
+     "subtitle": "Blame41",
+     "kind": "Musikvideo · Auftragsproduktion",
+     "date": "Mai 2026",
+     "badge": "Musikvideo",
+     "text": "Als Hochschulprojekt entstanden und als Auftragsarbeit für den Künstler produziert.",
+     "roles": [
+      "Planung / Regie",
+      "Kamera",
+      "Schnitt / Effekte"
+     ],
+     "crew": "Mit Matthäus Sidek, Justin Bochynek, Anton Siering und Nico Abel.",
+     "youtube": "",
+     "video": "",
+     "image": "img/blame41.jpg"
     },
     {
-      "id": "angst",
-      "title": "Die Angst vorm Erwachsenwerden",
-      "subtitle": "",
-      "kind": "Kurzfilm · nach Dogma-95-Regeln",
-      "date": "Februar 2026",
-      "badge": "Dogma 95",
-      "text": "Die Geschichte eines jungen Mannes, der aus einer Welt der Resignation ausbricht.",
-      "roles": [
-        "Storytelling",
-        "Regie",
-        "Kamera",
-        "Schnitt"
-      ],
-      "crew": "Mit Matthäus Sidek, Justin Bochynek, Sebastian Blohm-Pape und Chiara Müller.",
-      "youtube": "",
-      "video": "",
-      "image": "img/angst.jpg"
+     "title": "Die Angst vorm Erwachsenwerden",
+     "subtitle": "",
+     "kind": "Kurzfilm · nach Dogma-95-Regeln",
+     "date": "Februar 2026",
+     "badge": "Dogma 95",
+     "text": "Die Geschichte eines jungen Mannes, der aus einer Welt der Resignation ausbricht.",
+     "roles": [
+      "Storytelling",
+      "Regie",
+      "Kamera",
+      "Schnitt"
+     ],
+     "crew": "Mit Matthäus Sidek, Justin Bochynek, Sebastian Blohm-Pape und Chiara Müller.",
+     "youtube": "",
+     "video": "",
+     "image": "img/angst.jpg"
     },
     {
-      "id": "parallelwelt",
-      "title": "Parallelwelt",
-      "subtitle": "",
-      "kind": "Kurzfilm",
-      "date": "November 2025",
-      "badge": "Kurzfilm",
-      "text": "Eine scheinbar schicksalhafte Liebesgeschichte zwischen zwei Menschen, die sich immer wieder fast begegnen und sich doch jedes Mal verpassen.",
-      "roles": [
-        "Storytelling",
-        "Regie",
-        "Schnitt"
-      ],
-      "crew": "Mit Matthäus Sidek, Justin Bochynek, Sebastian Blohm-Pape und Chiara Müller.",
-      "youtube": "",
-      "video": "",
-      "image": "img/parallelwelt.jpg"
+     "title": "Parallelwelt",
+     "subtitle": "",
+     "kind": "Kurzfilm",
+     "date": "November 2025",
+     "badge": "Kurzfilm",
+     "text": "Eine scheinbar schicksalhafte Liebesgeschichte zwischen zwei Menschen, die sich immer wieder fast begegnen und sich doch jedes Mal verpassen.",
+     "roles": [
+      "Storytelling",
+      "Regie",
+      "Schnitt"
+     ],
+     "crew": "Mit Matthäus Sidek, Justin Bochynek, Sebastian Blohm-Pape und Chiara Müller.",
+     "youtube": "",
+     "video": "",
+     "image": "img/parallelwelt.jpg"
     },
     {
-      "id": "pokernight",
-      "title": "Pokernight",
-      "subtitle": "",
-      "kind": "Kurzfilm · Experimentell",
-      "date": "Oktober 2025",
-      "badge": "Kurzfilm",
-      "text": "Ein Kurzfilm über die audiovisuelle Darstellung veränderter Bewusstseinszustände.",
-      "roles": [
-        "Storytelling",
-        "Kamera",
-        "Schnitt"
-      ],
-      "crew": "Mit Justin Bochynek und Sebastian Blohm-Pape.",
-      "youtube": "",
-      "video": "",
-      "image": "img/pokernight.jpg"
+     "title": "Pokernight",
+     "subtitle": "",
+     "kind": "Kurzfilm · Experimentell",
+     "date": "Oktober 2025",
+     "badge": "Kurzfilm",
+     "text": "Ein Kurzfilm über die audiovisuelle Darstellung veränderter Bewusstseinszustände.",
+     "roles": [
+      "Storytelling",
+      "Kamera",
+      "Schnitt"
+     ],
+     "crew": "Mit Justin Bochynek und Sebastian Blohm-Pape.",
+     "youtube": "",
+     "video": "",
+     "image": "img/pokernight.jpg"
     }
-  ],
-  "series": [
+   ]
+  },
+  {
+   "id": "fotografie",
+   "type": "photos",
+   "visible": true,
+   "navLabel": "Fotografie",
+   "background": "default",
+   "spacing": "m",
+   "align": "left",
+   "divider": true,
+   "title": "Fotografie",
+   "intro": "Der Blick für das Einzelbild. Drei Serien von Reisen und aus der Stadt.",
+   "columns": 4,
+   "ratio": "4/5",
+   "gap": 10,
+   "items": [
     {
-      "id": "bangkok",
-      "title": "Bangkok",
-      "text": "Jede Stadt hat Geschichten, die darauf warten, entdeckt zu werden. In dieser Serie zeige ich Bangkok in Momenten, die oft übersehen werden: stille Details, unerwartete Kontraste und Alltagsszenen, die den Charakter der Stadt ausmachen.",
-      "photos": [
-        {
-          "src": "img/bangkok-1.jpg",
-          "alt": "Bangkok: Café mit alten Autos davor",
-          "wide": false
-        },
-        {
-          "src": "img/bangkok-2.jpg",
-          "alt": "Bangkok: Skytrain-Trasse mit Skyline",
-          "wide": false
-        },
-        {
-          "src": "img/bangkok-3.jpg",
-          "alt": "Bangkok: Mann an einer Kreuzung mit Taxi",
-          "wide": false
-        },
-        {
-          "src": "img/bangkok-4.jpg",
-          "alt": "Bangkok: Hausfassade mit Stromkabeln",
-          "wide": false
-        }
-      ]
+     "title": "Bangkok",
+     "text": "Jede Stadt hat Geschichten, die darauf warten, entdeckt zu werden. In dieser Serie zeige ich Bangkok in Momenten, die oft übersehen werden: stille Details, unerwartete Kontraste und Alltagsszenen, die den Charakter der Stadt ausmachen.",
+     "photos": [
+      {
+       "src": "img/bangkok-1.jpg",
+       "alt": "Bangkok: Café mit alten Autos davor",
+       "wide": false
+      },
+      {
+       "src": "img/bangkok-2.jpg",
+       "alt": "Bangkok: Skytrain-Trasse mit Skyline",
+       "wide": false
+      },
+      {
+       "src": "img/bangkok-3.jpg",
+       "alt": "Bangkok: Mann an einer Kreuzung mit Taxi",
+       "wide": false
+      },
+      {
+       "src": "img/bangkok-4.jpg",
+       "alt": "Bangkok: Hausfassade mit Stromkabeln",
+       "wide": false
+      }
+     ]
     },
     {
-      "id": "natur",
-      "title": "Natur",
-      "text": "Auf vielen Reisen habe ich gelernt, besondere Momente festzuhalten. Hier geht es nicht um ein bestimmtes Motiv, sondern um die Schönheit der Natur und die Details, an denen viele vorbeigehen.",
-      "photos": [
-        {
-          "src": "img/nature-1.jpg",
-          "alt": "Sonnenuntergang über Palmen",
-          "wide": false
-        },
-        {
-          "src": "img/nature-2.jpg",
-          "alt": "Tempeldach vor grünem Wald und Wolken",
-          "wide": false
-        },
-        {
-          "src": "img/nature-3.jpg",
-          "alt": "See mit Spiegelung in der Abenddämmerung",
-          "wide": false
-        }
-      ]
+     "title": "Natur",
+     "text": "Auf vielen Reisen habe ich gelernt, besondere Momente festzuhalten. Hier geht es nicht um ein bestimmtes Motiv, sondern um die Schönheit der Natur und die Details, an denen viele vorbeigehen.",
+     "photos": [
+      {
+       "src": "img/nature-1.jpg",
+       "alt": "Sonnenuntergang über Palmen",
+       "wide": false
+      },
+      {
+       "src": "img/nature-2.jpg",
+       "alt": "Tempeldach vor grünem Wald und Wolken",
+       "wide": false
+      },
+      {
+       "src": "img/nature-3.jpg",
+       "alt": "See mit Spiegelung in der Abenddämmerung",
+       "wide": false
+      }
+     ]
     },
     {
-      "id": "street",
-      "title": "Street",
-      "text": "Die Schönheit urbaner Straßen. Durch unterschiedliche Perspektiven, Details und Momente zeigen die Bilder Seiten der Stadt, die oft unbemerkt bleiben, von Architekturlinien bis zu Alltagsszenen.",
-      "photos": [
-        {
-          "src": "img/street-1.jpg",
-          "alt": "Lichtspuren auf einer Straße bei Nacht",
-          "wide": true
-        },
-        {
-          "src": "img/street-2.jpg",
-          "alt": "Betontreppenhaus von unten",
-          "wide": false
-        },
-        {
-          "src": "img/street-5.jpg",
-          "alt": "Dunkle Passage mit Laternen",
-          "wide": false
-        },
-        {
-          "src": "img/street-3.jpg",
-          "alt": "Schwarzweiß: Hochhäuser und Wolken",
-          "wide": true
-        },
-        {
-          "src": "img/street-4.jpg",
-          "alt": "Schwarzweiß: Gebäudeschluchten von unten",
-          "wide": true
-        }
-      ]
+     "title": "Street",
+     "text": "Die Schönheit urbaner Straßen. Durch unterschiedliche Perspektiven, Details und Momente zeigen die Bilder Seiten der Stadt, die oft unbemerkt bleiben, von Architekturlinien bis zu Alltagsszenen.",
+     "photos": [
+      {
+       "src": "img/street-1.jpg",
+       "alt": "Lichtspuren auf einer Straße bei Nacht",
+       "wide": true
+      },
+      {
+       "src": "img/street-2.jpg",
+       "alt": "Betontreppenhaus von unten",
+       "wide": false
+      },
+      {
+       "src": "img/street-5.jpg",
+       "alt": "Dunkle Passage mit Laternen",
+       "wide": false
+      },
+      {
+       "src": "img/street-3.jpg",
+       "alt": "Schwarzweiß: Hochhäuser und Wolken",
+       "wide": true
+      },
+      {
+       "src": "img/street-4.jpg",
+       "alt": "Schwarzweiß: Gebäudeschluchten von unten",
+       "wide": true
+      }
+     ]
     }
-  ],
-  "about": {
-    "image": "img/pokernight.jpg",
-    "caption": ""
+   ],
+   "limit": 8
+  },
+  {
+   "id": "leistungen",
+   "type": "services",
+   "visible": true,
+   "navLabel": "Leistungen",
+   "background": "default",
+   "spacing": "m",
+   "align": "left",
+   "divider": true,
+   "title": "Leistungen",
+   "intro": "Von der Idee bis zum Master",
+   "columns": 3,
+   "items": [
+    {
+     "label": "Regie & Kamera",
+     "title": "Dreh",
+     "text": "Konzept, Bildsprache und Kameraarbeit. Ich plane Einstellungen so, dass sie im Schnitt eine Geschichte tragen.",
+     "tags": [
+      "4K",
+      "25p / 50p",
+      "Gimbal"
+     ]
+    },
+    {
+     "label": "Editing",
+     "title": "Schnitt",
+     "text": "Präzises Timing, klarer Rhythmus und eine Dramaturgie, die das Publikum bis zum Ende hält.",
+     "tags": [
+      "Premiere Pro",
+      "DaVinci Resolve"
+     ]
+    },
+    {
+     "label": "Color",
+     "title": "Grading",
+     "text": "Farbkorrektur und Look-Entwicklung, die zur Marke oder zum Song passt und über alle Clips konsistent bleibt.",
+     "tags": [
+      "Rec.709",
+      "LOG",
+      "LUTs"
+     ]
+    },
+    {
+     "label": "Audio",
+     "title": "Sounddesign",
+     "text": "Tonschnitt, Mischung und Foley. Guter Ton entscheidet, ob ein Bild wirkt.",
+     "tags": [
+      "Mix",
+      "Foley",
+      "−14 LUFS"
+     ]
+    },
+    {
+     "label": "VFX",
+     "title": "Compositing",
+     "text": "Mehrspurige Bearbeitung, Motion Graphics und VFX, sauber ins Bild integriert.",
+     "tags": [
+      "After Effects",
+      "Tracking"
+     ]
+    },
+    {
+     "label": "Narrative",
+     "title": "Storytelling",
+     "text": "Erzählstruktur von der ersten Idee an, damit dein Film mehr ist als eine Reihe schöner Bilder.",
+     "tags": [
+      "Konzept",
+      "Storyboard"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ablauf",
+   "type": "steps",
+   "visible": true,
+   "navLabel": "",
+   "background": "default",
+   "spacing": "m",
+   "align": "left",
+   "divider": true,
+   "title": "So arbeiten wir zusammen",
+   "intro": "5 Phasen",
+   "items": [
+    {
+     "label": "Phase 1",
+     "title": "Briefing",
+     "text": "Wir klären Ziel, Zielgruppe, Budget und Termin in einem kurzen Call."
+    },
+    {
+     "label": "Phase 2",
+     "title": "Konzept",
+     "text": "Du bekommst Idee, Look-Referenzen und einen Drehplan zur Freigabe."
+    },
+    {
+     "label": "Phase 3",
+     "title": "Dreh",
+     "text": "Kamera, Licht und Ton am Set, abgestimmt auf den späteren Schnitt."
+    },
+    {
+     "label": "Phase 4",
+     "title": "Post",
+     "text": "Schnitt, Grading und Sound, inklusive Feedbackrunden."
+    },
+    {
+     "label": "Phase 5",
+     "title": "Abgabe",
+     "text": "Finale Master in allen Formaten, die du brauchst: 16:9, 9:16, 1:1."
+    }
+   ]
+  },
+  {
+   "id": "ueber",
+   "type": "textImage",
+   "visible": true,
+   "navLabel": "Über mich",
+   "background": "default",
+   "spacing": "m",
+   "align": "left",
+   "divider": true,
+   "image": "img/pokernight.jpg",
+   "imageSide": "left",
+   "imageRatio": "4/5",
+   "caption": "",
+   "eyebrow": "Über mich",
+   "title": "Hinter der Kamera",
+   "body": "Ich bin Videograf und Editor aus Berlin und arbeite freiberuflich für Musiker:innen, Marken und Filmteams. Mich interessiert, wie Bild und Ton zusammen eine Geschichte erzählen, die beim Publikum hängen bleibt.\n\nWeil ich Dreh und Postproduktion aus einer Hand mache, denke ich den Schnitt schon am Set mit. Das spart Zeit und macht das Ergebnis stimmiger. Mein Handwerk vertiefe ich im Studium der audiovisuellen Mediengestaltung (Bild & Ton) an der Mediadesign Hochschule.",
+   "facts": [
+    {
+     "label": "Standort",
+     "value": "Berlin, Projekte deutschlandweit"
+    },
+    {
+     "label": "Fokus",
+     "value": "Musikvideos, Kurzfilme, Social Content, Fotografie"
+    },
+    {
+     "label": "Software",
+     "value": "DaVinci Resolve, Premiere Pro, After Effects"
+    },
+    {
+     "label": "Sprachen",
+     "value": "Deutsch, Englisch"
+    }
+   ],
+   "button1": {
+    "label": "",
+    "link": ""
+   }
+  },
+  {
+   "id": "kontakt",
+   "type": "contact",
+   "visible": true,
+   "navLabel": "",
+   "background": "accent",
+   "spacing": "m",
+   "align": "left",
+   "divider": true,
+   "eyebrow": "● Verfügbar für Projekte in Berlin und deutschlandweit",
+   "title": "Lass uns",
+   "highlight": "drehen.",
+   "email": "janosch.rajewski@gmail.com",
+   "phone": "",
+   "links": [
+    {
+     "label": "Instagram · @janosch.ski",
+     "url": "https://www.instagram.com/janosch.ski"
+    },
+    {
+     "label": "YouTube · @janoschski",
+     "url": "https://www.youtube.com/@janoschski"
+    }
+   ],
+   "listTitle": "Das hilft mir bei deiner Anfrage",
+   "list": [
+    "Worum geht es? Musikvideo, Kurzfilm, Event, Social",
+    "Wunschtermin und Drehort",
+    "Ungefähres Budget",
+    "Referenzen oder Looks, die dir gefallen"
+   ]
   }
+ ]
 }

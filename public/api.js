@@ -3,7 +3,7 @@
    "demo" = Vorschau ohne Server (Änderungen nur in diesem Browser). */
 (function () {
   var API = {}, mode = null;
-  var TOKEN_KEY = 'jr-token', DEMO_KEY = 'jr-demo-content';
+  var TOKEN_KEY = 'jr-token', DEMO_KEY = 'jr-demo-content', DEMO_DRAFT = 'jr-demo-draft', DEMO_VERS = 'jr-demo-versions';
 
   function store(kind) { try { return window[kind]; } catch (e) { return null; } }
   function sget(k) { try { return store('sessionStorage').getItem(k); } catch (e) { return API._mem && API._mem[k]; } }
@@ -31,7 +31,53 @@
     return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; });
   };
 
-  API.getContent = function () {
+  // Inhalte aus der ersten Editor-Version (Filme/Fotos/Showreel/Porträt) in den Baukasten übernehmen,
+  // ohne dass Leistungen, Ablauf usw. verloren gehen.
+  function upgrade(d) {
+    if (!d || Array.isArray(d.sections)) return d;
+    return fetch('content.json', { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (base) {
+      var sr = d.showreel || {}, ab = d.about || {};
+      (base.sections || []).forEach(function (s) {
+        if (s.type === 'hero') { if (sr.heroImage) s.image = sr.heroImage; if (sr.youtube) s.youtube = sr.youtube; if (sr.video) s.video = sr.video; }
+        if (s.type === 'films' && Array.isArray(d.films)) s.items = d.films;
+        if (s.type === 'photos' && Array.isArray(d.series)) s.items = d.series;
+        if (s.type === 'textImage' && (ab.image || ab.caption != null)) { if (ab.image) s.image = ab.image; if (ab.caption != null) s.caption = ab.caption; }
+      });
+      return base;
+    }).catch(function () { return d; });
+  }
+
+  // Freigeschaltete Kunden-Codes (nur in diesem Tab)
+  var CODES_KEY = 'jr-codes';
+  API.codes = function () { try { return JSON.parse(sget(CODES_KEY) || '[]'); } catch (e) { return []; } };
+  function addCode(c) { var l = API.codes(); if (l.indexOf(c) < 0) l.push(c); sset(CODES_KEY, JSON.stringify(l)); }
+
+  // opts.full: alles (Editor, nur mit Login). Sonst: was Besucher sehen dürfen.
+  API.getContent = function (opts) {
+    opts = opts || {};
+    return API.mode().then(function (m) {
+      if (m === 'live') {
+        if (opts.full && API.token()) return fetch('/api/content?full=1', { cache: 'no-store', headers: { Authorization: 'Bearer ' + API.token() } }).then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(upgrade);
+        var codes = API.codes();
+        if (codes.length) return fetch('/api/unlock', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ codes: codes }) }).then(function (r) { return r.json(); }).then(function (j) { return upgrade(j.view); });
+        return API._getContent().then(upgrade);
+      }
+      if (opts.full) { try { var dr = store('localStorage').getItem(DEMO_DRAFT); if (dr) return upgrade(JSON.parse(dr)); } catch (e) {} }
+      return API._getContent().then(upgrade).then(function (d) { return opts.full || !window.Kit ? d : window.Kit.publicView(window.Kit.normalize(d), API.codes()).view; });
+    });
+  };
+  API.unlock = function (code) {
+    code = String(code || '').trim();
+    return API.mode().then(function (m) {
+      var codes = API.codes().concat([code]);
+      if (m === 'live') return fetch('/api/unlock', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ codes: API.codes(), code: code }) }).then(function (r) { return r.json(); });
+      return API._getContent().then(upgrade).then(function (d) { var r = window.Kit.publicView(window.Kit.normalize(d), codes); var r1 = window.Kit.publicView(window.Kit.normalize(d), API.codes()); return { ok: r.unlocked > r1.unlocked, unlocked: r.unlocked, view: r.view, prev: r1.unlocked }; });
+    }).then(function (j) {
+      if (j.ok) addCode(code);
+      return j;
+    });
+  };
+  API._getContent = function () {
     return API.mode().then(function (m) {
       if (m === 'live') {
         return fetch('/api/content', { cache: 'no-store' }).then(function (r) { if (!r.ok) throw 0; return r.json(); })
@@ -59,12 +105,52 @@
   API.save = function (content) {
     return API.mode().then(function (m) {
       if (m === 'demo') {
-        try { store('localStorage').setItem(DEMO_KEY, JSON.stringify(content)); }
+        try { store('localStorage').setItem(DEMO_DRAFT, JSON.stringify(content)); }
         catch (e) { throw new Error('Der Browser-Speicher ist voll. In der Vorschau passen nur wenige hochgeladene Bilder hinein.'); }
         return { ok: true };
       }
-      return fetch('/api/content', { method: 'PUT', headers: { 'content-type': 'application/json', 'Authorization': 'Bearer ' + API.token() }, body: JSON.stringify(content) })
+      return fetch('/api/content?draft=1', { method: 'PUT', headers: { 'content-type': 'application/json', 'Authorization': 'Bearer ' + API.token() }, body: JSON.stringify(content) })
         .then(function (r) { return r.json().then(function (j) { if (!r.ok) { var e = new Error(j.error || 'Speichern fehlgeschlagen.'); e.status = r.status; throw e; } return j; }); });
+    });
+  };
+
+
+  // ---------- Entwurf / Veröffentlichen / Versionen ----------
+  function ls() { return store('localStorage'); }
+  function authJ(url, opts) {
+    opts = opts || {}; opts.headers = Object.assign({ Authorization: 'Bearer ' + API.token() }, opts.headers || {});
+    return fetch(url, opts).then(function (r) { return r.json().then(function (j) { if (!r.ok) { var e = new Error(j.error || 'Fehler.'); e.status = r.status; throw e; } return j; }); });
+  }
+  API.publishStatus = function () {
+    return API.mode().then(function (m) {
+      if (m === 'live') return authJ('/api/publish', { cache: 'no-store' });
+      var d = null, p = null, v = []; try { d = ls().getItem(DEMO_DRAFT); p = ls().getItem(DEMO_KEY); v = JSON.parse(ls().getItem(DEMO_VERS) || '[]'); } catch (e) {}
+      return { hasDraft: !!d && d !== p, versions: v.map(function (x) { return { id: x.id, at: new Date(+x.id).toISOString() }; }) };
+    });
+  };
+  API.publish = function () {
+    return API.mode().then(function (m) {
+      if (m === 'live') return authJ('/api/publish', { method: 'POST' });
+      try {
+        var d = ls().getItem(DEMO_DRAFT); if (!d) return { ok: true, nothing: true };
+        var p = ls().getItem(DEMO_KEY), v = JSON.parse(ls().getItem(DEMO_VERS) || '[]');
+        if (p) { v.unshift({ id: String(Date.now()), data: p }); v = v.slice(0, 5); try { ls().setItem(DEMO_VERS, JSON.stringify(v)); } catch (e) {} }
+        ls().setItem(DEMO_KEY, d); ls().removeItem(DEMO_DRAFT);
+      } catch (e) { throw new Error('Der Browser-Speicher ist voll.'); }
+      return { ok: true };
+    });
+  };
+  API.discard = function () {
+    return API.mode().then(function (m) {
+      if (m === 'live') return authJ('/api/publish?action=discard', { method: 'POST' });
+      try { ls().removeItem(DEMO_DRAFT); } catch (e) {} return { ok: true };
+    });
+  };
+  API.restore = function (id) {
+    return API.mode().then(function (m) {
+      if (m === 'live') return authJ('/api/publish?action=restore&id=' + encodeURIComponent(id), { method: 'POST' });
+      var v = JSON.parse(ls().getItem(DEMO_VERS) || '[]').filter(function (x) { return x.id === id; })[0];
+      if (v) ls().setItem(DEMO_DRAFT, v.data); return { ok: !!v };
     });
   };
 
@@ -87,11 +173,11 @@
   };
 
   API.upload = function (file, onProgress) {
-    var isImg = /^image\//.test(file.type), isVid = /^video\//.test(file.type);
-    if (!isImg && !isVid) return Promise.reject(new Error('Bitte ein Bild oder Video auswählen.'));
+    var isImg = /^image\//.test(file.type), isVid = /^video\//.test(file.type), isPdf = file.type === 'application/pdf';
+    if (!isImg && !isVid && !isPdf) return Promise.reject(new Error('Bitte ein Bild, Video oder PDF auswählen.'));
     return API.mode().then(function (m) {
       if (m === 'demo') {
-        if (isVid) throw new Error('Video-Upload funktioniert erst auf der veröffentlichten Website. In der Vorschau kannst du einen YouTube-Link nutzen.');
+        if (isVid || isPdf) throw new Error((isPdf ? 'PDF-Upload' : 'Video-Upload') + ' funktioniert erst auf der veröffentlichten Website.');
         return API.resizeImage(file, 1200, 0.78).then(function (b) {
           return new Promise(function (res) { var fr = new FileReader(); fr.onload = function () { res({ src: fr.result }); }; fr.readAsDataURL(b); });
         });

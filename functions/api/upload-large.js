@@ -1,7 +1,7 @@
 import { json, isAuthed } from '../../lib/auth.js';
 
 // Große Videos in Stücken hochladen (R2 Multipart). Jedes Stück bleibt unter dem 100-MB-Limit von Cloudflare.
-const EXT = { 'video/mp4': 'mp4', 'video/webm': 'webm', 'video/quicktime': 'mov', 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp' };
+const EXT = { 'video/mp4': 'mp4', 'video/webm': 'webm', 'video/quicktime': 'mov', 'application/pdf': 'pdf', 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp' };
 
 export async function onRequest({ request, env }) {
   if (!(await isAuthed(request, env))) return json({ error: 'Nicht angemeldet oder Login abgelaufen.' }, 401);
