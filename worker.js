@@ -31,12 +31,27 @@ function handlerFor(mod, method) {
   return mod['onRequest' + m] || mod.onRequest;
 }
 
+// YouTube-Vorschaubilder über den eigenen Server laden, damit Besucher ohne Klick keine Verbindung zu Google aufbauen.
+async function ytThumb(id, request, ctx) {
+  const cache = caches.default, key = new Request(new URL('/yt-thumb/' + id, request.url).toString());
+  let res = await cache.match(key);
+  if (res) return res;
+  let up;
+  try { up = await fetch('https://i.ytimg.com/vi/' + id + '/hqdefault.jpg'); } catch (e) { up = null; }
+  if (!up || !up.ok) return new Response('Nicht gefunden', { status: 404 });
+  res = new Response(up.body, { headers: { 'content-type': 'image/jpeg', 'cache-control': 'public, max-age=86400' } });
+  ctx.waitUntil(cache.put(key, res.clone()));
+  return res;
+}
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     if (request.method === 'GET' && (url.pathname === '/' || url.pathname === '/index.html')) return renderPage(request, env);
     if (url.pathname === '/robots.txt') return robots(request);
     if (url.pathname === '/sitemap.xml') return sitemap(request);
+    const yt = url.pathname.match(/^\/yt-thumb\/([\w-]{11})(?:\.jpg)?$/);
+    if (yt) return ytThumb(yt[1], request, ctx);
     let mod = ROUTES[url.pathname.replace(/\/$/, '')], params = {};
     if (!mod && url.pathname.startsWith('/media/')) {
       mod = media;
