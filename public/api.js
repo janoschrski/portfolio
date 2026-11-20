@@ -24,7 +24,7 @@
     var m = v.match(/(?:youtu\.be\/|[?&]v=|\/embed\/|\/shorts\/|\/live\/)([\w-]{11})/);
     return m ? m[1] : '';
   };
-  API.ytThumb = function (id) { return 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg'; };
+  API.ytThumb = function (id) { return mode === 'live' ? '/yt-thumb/' + id + '.jpg' : 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg'; };
   API.ytEmbed = function (id) { return 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&playsinline=1'; };
 
   API.esc = function (s) {
